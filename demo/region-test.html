@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+		<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<title>无标题文档</title>
+			<link rel="stylesheet" type="text/css" href="http://cca.mbaobao.com/static/css/2.0.1/global.css?0917" media="all" />
+
+<script src="./../src/seajs/seajs/2.1.1/sea.js"></script>
+<script>
+      seajs.config({
+          base:'./../src/'
+      });
+</script>
+
+
+
+</head>
+
+<body>
+
+
+<span id="span_region_linkage" class="span_region"></span>
+<input type="hidden" name="province" id="input_provinceId"/>
+<input type="hidden" name="city"  id="input_cityId"/>
+<input type="hidden" name="district"  id="input_districtId"/>
+
+
+<script type="text/javascript">
+seajs.use(["gallery/region/1.0.0/region.js","gallery/region/1.0.0/areas"],function(Region,areas){
+
+    region = new Region({
+        source: areas,
+        target: "#span_region_linkage",
+        inputId: ["input_provinceId", "input_cityId", "input_districtId"]
+    });
+
+
+    region.init([1,1,1]);
+
+})	
+</script>
+
+
+
+</body>
+</html>
+		

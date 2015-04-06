@@ -1,0 +1,131 @@
+.list-container {
+	width: 100%;
+	min-width: 320px;
+}
+/* --搜索框-- */
+.listSearch {
+	background-color: #ffffff;
+	padding: 10px 4% 10px 4%;
+}
+.search-main {
+	line-height: 40px;
+	height: 40px;
+	font-size: 18px;
+	text-align: center;
+	background-color: #E4E4E4;
+}
+.search-main .search-logo {
+	width: 10%;
+	float: left;
+	text-align: center;
+}
+.search-logo .se-submit {
+	color: #999999;
+	display: block;
+	width: 100%;
+}
+.search-main .search-box {
+	float: left;
+	width: 90%;
+}
+.search-box .se-input {
+	display: inline-block;
+	width: 98%;
+	background-color: #E4E4E4;
+	line-height: 35px;
+	height: 32px;
+	border: none;
+}
+
+/* --提示-- */
+.hint-main {
+	line-height: 20px;
+	text-align: center;
+	padding: 8%;
+}
+
+/* --列表-- */
+.defaultList-item {
+	width: 50%;
+	float: left;
+	background-color: #ffffff;
+	border: 1px solid #E4E4E4;
+	line-height: 16px;
+	font-size: 12px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box
+}
+.defaultList-item .pic {
+	min-height: 158px;
+}
+.defaultList-item .defaultList-inf {
+	padding: 1%;
+}
+.defaultList-item .name {
+	color: #000000;
+	height: 32px;
+	overflow: hidden;
+}
+.defaultList-item .price {
+	line-height: 20px;
+	word-break: keep-all;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+.defaultList-item  .favorable {
+	color: #f12a62;
+	font-size: 16px;
+}
+.defaultList-item  .original {
+	padding-left: 5px;
+	color: #999999;
+}
+.defaultList-item .manyBuy {
+	color: #999999;
+	word-break: keep-all;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+
+/* ---460样式--- */
+@media screen and (max-width:460px) {
+	.listSearch {
+		padding: 7px 4% 7px 4%;
+	}
+	.search-main {
+		line-height: 30px;
+		height: 30px;
+		font-size: 14px;
+	}
+	.search-box .se-input {
+		line-height: 22px;
+		height: 22px;
+	}
+}
+
+
+/* ---排序--- */
+.goodList-orderby {height:34px; overflow:hidden; background:#fff; }
+.goodList-orderby li{line-height:34px;width:25%; float:left; text-align:center;}
+.goodList-orderby li span{ display:none;}
+.goodList-orderby li.on{ }
+.goodList-orderby li.on i{display:none; width:50px;border-bottom:2px solid #c00; height:0; overflow:hidden; margin:auto;}
+.goodList-orderby li.on span{display:inline; font-size:1.3em;color:#c00;}
+.goodList-orderby .filter span{display:inline; font-size:1.2em; margin-left:2px;}
+.goodList-mask{position: fixed;top: 0;width: 100%;height: 100%;margin: 0 auto;z-index: 9999;overflow: hidden;background-color: #222;opacity: .9;filter: alpha(opacity=90); display:none;}
+.goodList-filter{position: fixed;top: 0; right:0; width: 88%;z-index: 9999; background:#fff; padding-bottom:30px;display:none;}
+.goodList-filter header{height: 35px; overflow:hidden; background-color: #c6204d;}
+.goodList-filter header span,.goodList-filter header a{height: 35px;line-height: 35px;text-align: center;font-size: 1.2em;width: 60px;color: #fff;}
+.goodList-filter header span{float:left;}
+.goodList-filter header a{float:right;}
+.goodList-filter li{padding: 15px 0px 15px 20px;font-size: 12px;border-bottom: 1px solid #e1dfdf;}
+#js-price-form,#js-price-to{width: 25%;height: 25px;line-height: 25px;border: none;background-color: #d2d2d2;text-align: center;margin-right: 3px;border-radius: 3px;font-size: 1.2em;color: #3c3c3c;}
+#js-filter-start{display: block;text-align: center;line-height: 40px;font-size: 1.128em;color: #3c3c3c;margin:10px auto;height: 40px;width:60%;background: #d2d2d2;}
+
+
+/* ---拖动显示更多--- */
+.list-display-ctrl{ padding:18px 0; line-height:22px; text-align:center; background:#fff;display:none;}
+.list-display-load{background:url('img/load_Circle.gif') #fff no-repeat center; padding-bottom:80px; text-align:center; padding-top:10px; display:none;}

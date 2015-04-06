@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" /> 
+    <title>地址编辑页面</title>
+    
+    <script src="../../src/seajs/seajs/2.1.1/sea.js"></script>
+    <script>
+          seajs.config({
+              base:'../../src/'
+          });
+    </script>
+
+    <link rel="stylesheet" href="../../src/global/global.css">
+    <link rel="stylesheet" href="../../src/page/cart/cart.css">
+</head>
+<body>
+    <div class="container">
+        <header class="g-top"></header>
+        <div class="bd-container">
+            <section class="address-edit">
+                <div class="form-line">
+                    <div class="form-hd">姓名：</div>
+                    <div class="form-bd"><input type="text" name="" id="j_name" class="text-input"></div>
+                </div>
+                <div class="form-line">
+                    <div class="form-hd">手机：</div>
+                    <div class="form-bd"><input type="text" name="" id="j_tel" class="text-input"></div>
+                </div>
+                <div class="form-line line-address">
+                    <div class="form-hd">地区：</div>
+                    <div class="form-bd" >
+                        <span id="span_region_linkage" class="span_region"></span>
+                    </div>
+                </div>
+                <div class="form-line">
+                    <div class="form-hd">邮编：</div>
+                    <div class="form-bd">
+                        <input type="text" name="" id="j_tel" class="text-input">
+                    </div>
+                </div>
+                <div class="form-textarea">
+                    <div class="form-hd">详情地址：</div>
+                    <div class="form-bd">
+                       <textarea name="address" rows="5" class="textarea-input"></textarea>
+                    </div>
+                </div>
+                <div class="form-btns-area">
+                    <button class="ui-btn ui-btn-fill">完成</button>
+                </div>
+            </section>
+        </div>
+        <footer class="g-footer"></footer>
+    </div>
+
+
+
+<input type="hidden" name="j_stateid" id="j_stateid" class="text-input" value="430000"")">
+<input type="hidden" name="j_state" id="j_state" class="text-input" value="@(Model.ActAddressM != null ? Model.ActAddressM.State : "")">
+<input type="hidden" name="j_cityid" id="j_cityid" class="text-input" value="430900"")">
+<input type="hidden" name="j_city" id="j_city" class="text-input" value="@(Model.ActAddressM != null ? Model.ActAddressM.City : "")">
+<input type="hidden" name="j_districtid" id="j_districtid" class="text-input" value="430903"")">
+<input type="hidden" name="j_district" id="j_district" class="text-input" value="@(Model.ActAddressM != null ? Model.ActAddressM.District : "")">
+
+
+<script type="text/javascript">
+seajs.use(["gallery/region/1.0.0/region.js","gallery/region/1.0.0/areas"],function(Region,areas){
+
+    var region = new Region({
+        source: areas,
+        target: "#span_region_linkage",
+        inputId: ["#j_stateid", "#j_cityid", "#j_districtid"]
+    });
+
+    region.on("selected", function(data) {
+        if (!data) {
+            return;
+        } else if (data.type === "province") {
+            $("#j_stateid").val(data.id);
+            $("#j_state").val(data.name)  
+        } else if (data.type === "city") {
+            $("#j_cityid").val(data.id);
+            $("#j_city").val(data.name)  
+        } else if (data.type === 'district') {
+            $("#j_districtid").val(data.id);
+            $("#j_district").val(data.name)  
+        }
+    });
+
+    region.init([$("#j_stateid").val(), $("#j_cityid").val(), $("#j_districtid").val()]);
+
+})  
+</script>
+
+
+</html>
+</body>

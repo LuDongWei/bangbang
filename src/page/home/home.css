@@ -1,0 +1,211 @@
+/* build  2014-12-31 */
+
+.home-container {
+    width: 100%;
+    min-width: 320px;
+}
+
+.home-container .title {
+    padding-left:5px;
+    line-height:36px;
+}
+
+.homeMore-banner span {
+    float: right;
+    padding-right:5px;
+    line-height:36px;
+}
+
+.handOver {
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.handOver .wrap {
+    width: 100%;
+    min-width: 110px;
+    position: relative;
+}
+
+.handOver .swipe {
+    text-align: center;
+    min-height: 90px;
+    overflow: hidden;
+}
+
+.handOver .item {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.handOver .slider-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 0;
+}
+
+@media screen and (max-width:350px) {
+    .handOver .slider-nav {
+        bottom: 5px;
+    }
+}
+
+.handOver .slider-nav li {
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 0 3px;
+    background-color: #cecece;
+    line-height: 0;
+    font-size: 0;
+    padding: 0;
+    opacity: .8;
+}
+
+.handOver .slider-nav li.on {
+    background-color: #c7154a;
+    opacity: 1;
+}
+
+.recommend-hot {
+    background-color: #fff;
+    border: 1px solid #E4E4E4;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.recommend-hot .hot-left,.recommend-hot .hot-right{
+    float:left;
+    width:50%;
+}
+.recommend-hot .small-big-item{
+    min-height:60px;
+}
+.recommend-hot .small-big-item{
+    min-height:120px;
+}
+
+
+.industry-list .item {
+    float: left;
+    width: 50%;
+}
+
+.industry-item {
+    padding: 2px;
+    background-color: #fff;
+    border: 1px solid #E4E4E4;
+    min-height: 65px;
+    overflow: hidden;
+}
+
+.industry-item .label-ind {
+    width: 62%;
+    float: left;
+}
+
+.label-ind .main {
+    width: 80%;
+    margin: 15% auto 0;
+}
+
+.label-ind .name {
+    font-size: 14px;
+    color: #333;
+}
+
+.label-ind .inf {
+    font-size: 12px;
+    color: #9f9f9f;
+}
+
+.industry-item .pic {
+    width: 38%;
+    float: left;
+}
+
+.homeMore-banner .title {
+    float: left;
+}
+
+
+
+.defaultList-item {
+    width: 50%;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #E4E4E4;
+    line-height: 16px;
+    font-size: 12px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.defaultList-item .pic {
+    min-height: 158px;
+}
+
+.defaultList-item .defaultList-inf {
+    padding: 1%;
+}
+
+.defaultList-item .name {
+    color: #000;
+    height: 32px;
+    overflow: hidden;
+}
+
+.defaultList-item .price {
+    line-height: 20px;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.defaultList-item .favorable {
+    color: #f12a62;
+    font-size: 16px;
+}
+
+.defaultList-item .original {
+    padding-left: 5px;
+    color: #999;
+}
+
+.defaultList-item .manyBuy {
+    color: #999;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footerAd {
+    margin: 5px auto;
+}
+
+@media screen and (max-width:460px) {
+    .recommend-hot .change-item {
+        border-top: 0 solid #E4E4E4;
+    }
+
+    .homeMore-item .price {
+        line-height: 18px;
+    }
+
+    .homeMore-item .favorable {
+        font-size: 14px;
+    }
+
+    .homeMore-item .original {
+        padding-left: 3px;
+    }
+}

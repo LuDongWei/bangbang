@@ -1,0 +1,625 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-style: normal
+}
+
+img {
+    border: 0;
+    vertical-align: bottom
+}
+
+img a {
+    border: 0;
+    text-decoration: none
+}
+
+ol,ul {
+    list-style: none
+}
+
+a{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    text-decoration:none;
+    color:#333
+
+
+}
+
+a:hover{
+    text-decoration:none;
+}
+a:active {
+  -webkit-tap-highlight-color:rgba(255,255,255,0);
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input[type=text],select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    padding: 0;
+    background: 0 0;
+    border: none;
+    font-size: 14px;
+    text-indent: 3px;
+}
+
+input[type=search] { 
+  -webkit-appearance: none; 
+}
+
+button, input, select, textarea{
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+
+body {
+    line-height: 1.0;
+    -webkit-text-size-adjust: none;
+    background-color: #e4e4e4;
+    font: 13px/1.231 "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    color:#333;
+}
+
+
+
+
+/* ======================= FONT FACE =======================  */
+@font-face {
+  font-family: 'iconfont';
+  src: url('http://at.alicdn.com/t/font_1422691998_176118.eot'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_1422691998_176118.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_1422691998_176118.woff') format('woff'), /* chrome、firefox */
+  url('http://at.alicdn.com/t/font_1422691998_176118.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_1422691998_176118.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont{
+    font-family: iconfont;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+}
+
+/* ======================= 常用 样式 =======================  */
+/* ---仿-table--- */
+.flex-out {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex;
+}
+.flex-in {
+  -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 1; /* OLD - Firefox 19- */
+  -webkit-flex: 1; /* Chrome */
+  -ms-flex: 1; /* IE 10 */
+  flex: 1; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+/* ---去除浮动-- */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+
+
+/*头部*/
+.new-header{
+  position: relative;
+  z-index: 8888;
+  height: 40px;
+  background:#f3366b
+}
+
+.new-header .iconfont{
+  font-size: 25px;
+  padding-right: 2px;
+  vertical-align: middle;
+  color:#fff;
+}
+
+.new-header .l-a-category,
+.new-header .l-a-back{
+  position: absolute;
+  padding-top: 4px;
+  padding-left: 6px;
+  top:0px;
+  width: 30px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.new-header .l-a-home{
+  position: absolute;
+  padding-top: 6px;
+  top:0px;
+  right: 4px;
+  width: 30px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.new-header .l-a-user{
+  position: absolute;
+  padding-top: 4px;
+  top:0px;
+  right: 42px;
+  width: 30px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.new-header .l-a-cart{
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  width: 30px;
+  height: 32px;
+}
+
+.new-header .l-a-cart .cart-num{
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 16px;
+  height: 16px;
+  background-color: #ff4e00;
+  border: 1px solid #fff;
+  display: block;
+  border-radius: 10px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+  color:#fff;
+}
+
+.new-header .l-a-user .iconfont,
+.new-header .l-a-home .iconfont,
+.new-header .l-a-cart .iconfont{
+  font-size:25px;
+  font-weight: normal;
+}
+
+.new-header .l-a-cart .iconfont{
+  font-size:26px;
+}
+
+.new-header h2 {
+  height: 40px;
+  line-height: 40px;
+  font-weight: normal;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+}
+
+.new-header .search-bar{
+  padding:5px 90px 0 40px;
+}
+
+/*
+.new-header .search-bar:before{
+  font-family: iconfont;
+  content: "\e611";
+  position: absolute;
+  left: 45px;
+  top: 9px;
+  font-size:18px;
+  color:#999;
+}
+*/
+
+.new-header .search-bar input[type=search]{
+  width: 100%;
+  background: #fff;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 25px 5px 15px;
+  font-size: 12px;
+}
+
+/* 头部 end */
+
+
+/* --搜索框-- */
+.listSearch {
+  background-color: #ffffff;
+  padding: 10px;
+}
+.search-main {
+  line-height: 40px;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  background-color: #E4E4E4;
+  border-radius: 4px;
+
+  padding-right:40px;
+
+}
+.search-main .search-logo {
+  width: 40px;
+  float: right;
+  margin-right:-40px;
+  text-align: center;
+}
+.search-logo .se-submit {
+  color: #999999;
+  display: block;
+  width: 100%;
+}
+.search-main .search-box {
+  float: right;
+  width:100%;
+}
+.search-box .se-input {
+  display: inline-block;
+  width: 98%;
+  background-color: #E4E4E4;
+  line-height: 32px;
+  height: 32px;
+  border: none;
+  font-size:13px;
+}
+
+/*  搜索按钮 */
+.l-a-btn{
+    position: absolute;
+    padding-top: 4px;
+    top: 4px;
+    right: 88px;
+    width: 30px;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.l-a-btn .iconfont{
+    color: #bbb;
+    font-size:20px;
+}
+
+
+/*分页*/
+.pager {
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.14285em;
+    text-align: center;
+    font-weight: 700;
+    padding: 20px 0;
+}
+
+.pager ul {
+    width: 85%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.pager li.p-prev {
+    width: 25%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+.pager li.p-center {
+    width: 40%;
+    margin: 0 auto;
+    font-weight: normal;
+    background-color: #fff;
+}
+
+.pager li.p-center select {
+    display: inline-block;
+    padding-left: 3px;
+    padding-right: 4px;
+    height: 23px;
+    line-height: 23px;
+    -webkit-appearance: none;
+    background: 0 0;
+    border: 0;
+    position: relative;
+    z-index: 3;
+    border: none;
+    font-weight: normal;
+    color: #333;
+    vertical-align: inherit;
+}
+
+.pager li.p-center .page-total {
+    padding-left: 8px;
+}
+
+.pager li.p-next {
+    width: 25%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+}
+
+.pager a {
+    display: block;
+    padding: 0 10px;
+}
+
+/* 头部信息 */
+
+.hand-message {
+    height: 60px;
+    background-color: rgba(50,50,50,0.9);
+    color:#fff;
+    position: fixed;
+    top:-60px;
+    left:0;
+    width: 100%;
+    text-align: left;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.hand-message .message-close{
+    width:24px;
+    height: 24px;
+    position: absolute;
+    top:50%;
+    right:10px;
+    margin-top:-12px;
+    border-radius:24px;
+    text-align: center;
+    line-height: 24px;
+    display: block;
+    background-color: #000;
+    color:#fff;
+}
+.hand-message .message-close:before{
+    position: absolute;
+    top:4px;
+    left:8px;
+    content:'';
+    border-left:2px solid #FFF;
+    border-bottom:2px solid #FFF;
+    -webkit-transform: rotate(-45deg);
+    display: block;
+    height: 6px;
+    width: 6px;
+}
+.hand-message .message-close:after{
+    position: absolute;
+    top:12px;
+    left:8px;
+    content:'';
+    border-left:2px solid #FFF;
+    border-bottom:2px solid #FFF;
+    -webkit-transform: rotate(135deg);
+    display: block;
+    height: 6px;
+    width: 6px;
+}
+.hand-message .message-content{
+    padding:20px 0;
+    text-align: center;
+}
+
+/*背景加载*/
+
+.loading-bg{
+    background-image: url(img/loading.gif);
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size: 50px 50px;
+	background-color: #fff;
+}
+
+.loading-box{
+    position: absolute;
+    top:0;
+    height: 100%;
+    text-align: center;
+    z-index: 9999;
+    display: none;
+    width: 100%;
+}
+
+.loading-box .box-wrap{
+    width:60px;
+    height: 60px;
+    border-radius:4px;
+    background-color:rgba(0,0,0,0.5);
+    position: absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%, -50%);
+}
+
+.loading-box i{
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    -webkit-transform:translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background:url(img/loading_me.png) 0 0;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: step-start;
+    -webkit-animation-name: animate-loading;
+}
+
+/*省市区*/
+.rg-selects {
+    text-align: left;
+}
+
+.rg-selects .rg-item {
+    position: relative;
+    margin-right:4px;
+    height: 21px;
+    border-top:1px solid #888;
+    border-left:1px solid #888;
+    border-bottom:1px solid #afafaf;
+    border-right:1px solid #afafaf;
+    float:left;
+    display: inline-block;
+    *display:inline;
+    *zoom:1;
+}
+
+.rg-selects .rg-current{
+    height:19px;
+    margin:1px;
+    font-size: 12px;
+    cursor: pointer;
+    float:left;
+    background-color:#fff;
+    *display: inline;
+}
+
+.rg-selects .rg-cur-title{
+    float:left;
+    height: 19px;
+    line-height:19px;
+    padding:0 8px;
+    color:#333;
+}
+
+.rg-selects .rg-ico{
+    width:19px;
+    height: 19px;
+    float: left;
+    background-color: #888;
+    position: relative;
+}
+
+.rg-selects .rg-arrow{
+    width: 0;
+    height: 0;
+    border-width: 4px 4px;
+    border-style: solid;
+    border-color: #fff #888 #888;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top:8px;
+    left:5px;
+}
+
+.rg-selects .rg-list{
+    display: none;
+    position: absolute;
+    top:21px;
+    left: -1px;
+    float:left;
+}
+
+.rg-selects .rg-list{
+    border:1px solid #888;
+    padding:8px;
+    background-color: #fff;
+    width:400px;
+    text-align: left;
+    color:#333;
+    box-shadow:3px 3px 5px #ababab
+}
+
+.rg-selects .rg-list .rg-tip{
+    color:#888;
+}
+
+.rg-selects .rg-list a{
+    display: inline-block;
+    *display:inline;
+    *zoom:1;
+    width:100px;
+    text-align: left;
+    line-height: 22px;
+    height: 22px;
+    text-indent: 4px;
+}
+
+.rg-selects .rg-list .rg-item-select {
+    background-color:#ff6c00;
+    color:#fff;
+}
+
+.rg-selects .rg-list .rg-item-select:hover {
+    color:#fff;
+}
+
+.rg-selects .rg-over .rg-list{
+    display: block;
+}
+
+.rg-selects .rg-over .rg-ico{
+    background-color: #a5a5a5;
+}
+
+.rg-selects .rg-over .rg-arrow{
+    border-color: #fff #a5a5a5 #a5a5a5;
+}
+
+
+@-webkit-keyframes animate-loading {
+    0%     { background-position:  0px 0; }
+    12.5%      { background-position:-30px 0; }
+    25%        { background-position:-60px 0; }
+    37.5%      { background-position:-90px 0; }
+    50%        { background-position:-120px 0; }
+    62.5%      { background-position:-150px 0; }
+    75%        { background-position:-180px 0; }
+    87.5%      { background-position:-210px 0; }
+    100%       { background-position:-240px 0; }
+}

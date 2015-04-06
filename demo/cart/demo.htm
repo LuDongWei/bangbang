@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" /> 
+    <title>购物车</title>
+    <link rel="stylesheet" href="http://m.51bbmall.com/m/global/global.css">
+    <link rel="stylesheet" href="http://m.51bbmall.com/m/page/cart/cart.css">
+    
+    <script src="http://m.51bbmall.com/m/seajs/seajs/2.1.1/sea.js"></script>
+    <script>
+    seajs.config({
+        base:'http://m.51bbmall.com/m/',
+        alias: {
+            "zepto" : "zepto/zepto/1.1.2/zepto",
+            "$"     : "zepto/zepto/1.1.2/zepto",
+            "handlebars" : "gallery/handlebars/1.3.0/handlebars",
+            "backbone"   : "gallery/backbone/1.0.0/backbone",
+            "underscore" : "gallery/underscore/1.6.0/underscore"
+        }
+    });
+    </script>
+    
+    
+</head>
+<body>
+	<header class="m-head">
+		<div class="new-header">
+			<a href="javascript:history.go(-1)" class="l-a-back"><span class="iconfont">&#xe60b;</span></a>
+			<h2>购物车</h2>
+			<a href="/user/index" class="l-a-user"><span class="iconfont">&#xe60a;</span></a>
+			<a href="javascript:void(0);" class="l-a-cart">
+				<span class="iconfont">&#xe609;</span>
+				<span id="J-cart-num" class="cart-num">0</span>
+			</a>
+		</div>
+	</header>
+
+    <div class="container">
+        <!--<header class="g-top"></header>-->
+        <div class="bd-container" id="J-shopping-cart"></div>
+        <footer class="g-footer"></footer>
+    </div>
+    
+    <script>
+        seajs.use('page/cart/cart');
+    </script>
+
+    <script id="cartSheetPromotion-template" type="text/x-handlebars-template">
+        <div class="prom-mask"></div>
+        <div class="prom-in on-show">
+            <div class="hd clearfix"><h3>{{#if isShopProm}}选择店铺优惠{{else}}选择商品优惠{{/if}}</h3> <i class="iconfont j_hide_promotion">&#xe608;</i></div>
+            <div class="bd">
+                <ul class="clearfix">
+                    {{#each promList}}
+                        <li class="item {{#if used}}used{{/if}} {{#if fixed}}fixed{{/if}}"><a class="{{#if fixed}}j_no_select_promotion{{else}}j_select_promotion{{/if}}" href="#" data-id="{{../id}}"  data-type="{{../type}}" data-apid="{{ap_id}}">{{name}}</a></li>
+                    {{/each}}
+                </ul>
+                <div class="confirm-btn">
+                    <!--<button class="ui-btn j_select_promotion" style="display:inline-block;">确认</button>-->
+                </div>
+            </div>
+        </div>
+    </script>
+    
+    <script id="cartEmptyView-template" type="text/x-handlebars-template">
+        <section class="cart-empty-view">
+            <div class="empty-view">
+                 <ul>
+                    <li class="pic">
+                        <img src="http://cca.mbaobao.com/mkts/201405/22/cart.png">  
+                    </li>
+                    <li class="tell">
+                       您的购物车还是空的哦
+                    </li>
+                    <li class="link"></li>
+                 </ul>
+            </div>
+        </section>
+    </script>
+
+
+    <script id="cartSheetView-template" type="text/x-handlebars-template">
+        <div class="shops">
+            {{#each shops}}
+            <section class="item-shop">
+                <header class="shop-hd">
+                    <span class="j_shop_select i-select {{#if checked}}i-selected{{/if}}" data-shopid="{{id}}" data-checked="{{#if checked}}true{{else}}false{{/if}}"><i class="iconfont">&#xe601;</i></span>
+                    <h4 class="shop-title">{{shop_name}}</h4>
+                    {{#if isPromotion}}<div class="shop-prom j_show_promotion" data-id="{{id}}" data-type="1"><i class="iconfont">&#xe61e;</i><span>店铺促销按钮</span></div>{{/if}}
+                </header>
+                <div class="shop-goods">
+                    <ul>
+                        {{#each items}}
+
+                        <li class="item">
+                            <div class="g-select">
+                                {{#if isSku}}<span class="j_goods_select i-select {{#if checked}}i-selected{{/if}}" data-id="{{id}}" data-checked="{{#if checked}}true{{else}}false{{/if}}"><i class="iconfont">&#xe601;</i></span>{{/if}}
+                            </div>
+                            <div class="g-pic">
+                                <a href="http://m.51bbmall.com/item/{{sku_id}}"><img src="{{image_url}}" width="80" height="80" /></a>
+                            </div>
+                            <div class="title-wrap">
+                                <div class="g-title">
+                                    <div class="title">{{name}}</div>
+                                    <div class="attr-info">{{tag}}</div>
+                                </div>
+                                
+                                {{#if isSku}}
+                                <div class="qty">
+                                     <button type="button" class="decrease  j_goods_decrease {{#if isQtyMin}}disabled{{/if}}" data-shopid="{{../id}}" data-id="{{id}}"></button>
+                                      <input type="text" class="num j_qty_nubmer" name="quantity" autocomplete="off" value="{{qty}}" min="1" max="{{stock}}" data-shopid="{{../id}}" data-id="{{id}}">
+                                     <button type="button" class="increase  j_goods_increase {{#if isQtyMax}}disabled{{/if}}" data-shopid="{{../id}}" data-id="{{id}}"></button>
+                                </div>
+                                {{else}}
+                                <div class="qty">
+                                     <button type="button" class="decrease disabled" data-shopid="{{../id}}" data-id="{{id}}"></button>
+                                      <input type="text" class="num" name="quantity" autocomplete="off" value="{{qty}}" min="1" max="{{stock}}" data-shopid="{{../id}}" data-id="{{id}}" disabled="disabled">
+                                     <button type="button" class="increase disabled" data-shopid="{{../id}}" data-id="{{id}}"></button>
+                                </div>
+                                {{/if}}
+                                
+                            </div>
+                            <div class="price-wrap">
+                                <div class="g-price">
+                                    ¥{{promotion_amount}}
+                                </div>
+                                {{#if isPromotion}}<div class="goods-prom j_show_promotion" data-id="{{id}}" data-type="0"><i class="iconfont">&#xe61e;</i><span>卖家促销</span></div>{{/if}}
+                                
+                                {{#if isSku}}
+                                <div class="remove-btn j_goods_remove" data-shopid="{{../id}}" data-id={{id}}>
+                                    <i class="iconfont">&#xe608;</i>
+                                </div>
+                                {{/if}}
+                                
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+                <div class="shop-total">
+                    <div class="favorable">{{#if free_freight}}<span>免运费</span>{{else}}<span>运费:{{freight}}元</span>{{/if}}</div>
+                    <span>共{{count}}件商品 合计：</span><strong>¥{{total_amount}}</strong>
+                </div>
+            </section>
+            {{/each}}
+        </div>
+        
+        <div class="pay-bar"></div>
+        <div class="popup-promotion"></div>
+    </script>
+
+    
+    
+    <!--Tpl cartSheetBar-->
+    <script id="cartSheetBar-template" type="text/x-handlebars-template">
+        <div class="total">
+            合计：<strong class="total-price">¥ {{totalAmount}}</strong>
+        </div>
+        <div class="post-cart">
+            <a class="ui-btn" href="javascript:void(0);" id="j_post_checkout"> 结算({{itemCount}}) </a>
+        </div>
+    </script>
+
+
+    <script id="cartCheckoutView-template" type="text/x-handlebars-template">
+            <section class="box address">
+                <div class="addr-wrap j_address_link" data-link="{{#if curAddress}}#address/list{{else}}{{#if haveAddress}}#address/list{{else}}#address/new{{/if}}{{/if}}/{{selectIds}}">
+                    {{#if curAddress}}
+                    {{#curAddress}}
+                    <div class="uname">{{receiver_name}}</div>
+                    <div class="uphone">{{receiver_mobile}} {{receiver_phone}}</div>
+                    <div class="uaddress">{{state}}{{city}}{{district}}{{address}}</div>
+                    {{/curAddress}}
+                    {{else}}
+						{{#if haveAddress}}
+							<div class="no-address">还没有选择地址信息，点击选择</div>
+						{{else}}
+							<div class="no-address">还没有地址信息，点击添加</div>
+						{{/if}}
+                    {{/if}}
+                    <i class="iconfont in-open-icon">&#xe60c;</i>
+                </div>
+            </section>
+            <section class="box goods">
+            {{#each shops}}
+                {{#if haveChecked}}
+                <div class="checkout-shop">
+                    <header class="shop-hd"><div class="wrap">店铺：<strong>{{shop_name}}</strong></div></header>
+                    <div class="shop-goods">
+                        <ul>
+                            {{#each items}}
+                            {{#if checked}}
+                                <li class="item">
+                                    <div class="pic"><a href="http://m.51bbmall.com/item/{{sku_id}}"><img src="{{image_url}}" alt="" width="80" height="80"/></a></div>
+                                    <div class="title-wrap">
+                                        <div class="title">{{name}}</div>
+                                        <div class="attr-info">{{tag}}</div>
+                                    </div>
+                                    <div class="price-wrap">
+                                        <div class="g-price">
+                                            ¥{{promotion_amount}}
+                                        </div>
+                                        <div class="qty-num">x{{qty}}</div>
+                                    </div>
+                                </li>
+                            {{/if}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="box box-in line-bar dispatching">
+                        <div class="bar-hd">配送方式</div>
+                        <div class="bar-bd">
+                            快递 {{#if free_freight}}免邮{{else}}{{freight}}元{{/if}}
+                        </div>
+                    </div>
+                    {{#if coupon_list}}
+                    <div class="box box-in line-bar coupon j_coupon_link"  data-link="#coupon/{{id}}/{{../../../selectIds}}">
+                        <div class="bar-hd">优惠券</div>
+                        <div class="bar-bd">
+                          <div class="con">{{useCouponCode}}</div>
+                           <i class="iconfont in-open-icon">&#xe60c;</i>
+                        </div>
+                    </div>
+                    {{/if}}
+                    <div class="box box-in line-bar u-message">
+                        <div class="bar-bd">
+                            <input type="text" value="{{buy_message}}" placeholder="给卖家留言" class="input-message j_post_message" id="input_msg" data-id="{{id}}"/>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="subtotal">
+                <span>{{#if discount_amount}}优惠：¥{{discount_amount}}{{/if}}&emsp;共{{count}}件商品 合计：</span><strong>¥{{total_amount}}</strong>
+                </div>
+                {{/if}}
+            {{/each}}
+            </section>
+            {{#if cart.exchange_amount}}
+            <section class="box line-bar gold">
+                <div class="bar-hd">元宝抵扣</div>
+                <div class="bar-bd {{#if cart.wallet_used}}use-gold{{/if}} j_gold_btn">
+                    您有{{cart.wallet_balance}}个元宝，当前{{#if cart.wallet_used}}已{{else}}可{{/if}}抵用¥{{cart.exchange_amount}} <div class="use-gold-btn {{#if cart.wallet_used}}u-g-selected{{/if}}" ></div>
+                </div>
+            </section>
+            {{/if}}
+            <section class="box line-bar title  j_invoice_link"  data-link="#invoice/{{selectIds}}">
+                <div class="bar-hd">发票</div>
+                <div class="bar-bd">
+                <div class="con">{{cart.invoice_title}}</div> <i class="iconfont in-open-icon">&#xe60c;</i>
+                </div>
+            </section>
+
+            <section class="box pay-bar">
+                <div class="total">
+                    <p>实付金额：<strong class="total-price">¥ {{cart.total_amount}}</strong></p>
+                </div>
+                <div class="post-cart">
+                    <a class="ui-btn" href="javascript:void(0);" id="j_post_cart">提交订单</a>
+                </div>
+            </section>
+
+    </script>
+    
+    <script id="addressEditView-template" type="text/x-handlebars-template">
+		{{#with address}}
+			<section class="address-edit">
+				<div class="form-line">
+					<div class="form-hd">姓名：</div>
+					<div class="form-bd"><input type="text" name="" id="j_name" class="text-input" value="{{receiver_name}}"></div>
+				</div>
+				<div class="form-line">
+					<div class="form-hd">手机：</div>
+                    <div class="form-bd"><input type="text" name="" id="j_mobile" class="text-input" value="{{receiver_mobile}}"></div>
+                </div>
+				<div class="form-line">
+                    <div class="form-hd">电话：</div>
+                    <div class="form-bd"><input type="text" name="" id="j_phone" class="text-input" value="{{receiver_phone}}"></div>
+				</div>
+				<div class="form-line line-address">
+					<div class="form-hd">地区：</div>
+					<div class="form-bd" >
+						<span id="span_region_linkage" class="span_region"></span>
+					</div>
+				</div>
+				<div class="form-line">
+					<div class="form-hd">邮编：</div>
+					<div class="form-bd">
+						<input type="text" name="" id="j_postcode" class="text-input" value="{{postcode}}">
+					</div>
+				</div>
+				<div class="form-textarea">
+					<div class="form-hd">详情地址：</div>
+					<div class="form-bd">
+					   <textarea name="address" rows="5" class="textarea-input" id="j_address">{{address}}</textarea>
+					</div>
+				</div>
+				<div class="form-btns-area">
+					<button class="ui-btn ui-btn-fill j-address-save" data-uaid="{{ua_id}}">完成</button>
+				</div>
+				
+				<input type="hidden" name="j_stateid" id="j_stateid" class="text-input" value="{{state_id}}" />
+				<input type="hidden" name="j_state" id="j_state" class="text-input" value="{{state}}">
+				<input type="hidden" name="j_cityid" id="j_cityid" class="text-input" value="{{city_id}}">
+				<input type="hidden" name="j_city" id="j_city" class="text-input" value="{{city}}">
+				<input type="hidden" name="j_districtid" id="j_districtid" class="text-input" value="{{district_id}}">
+				<input type="hidden" name="j_district" id="j_district" class="text-input" value="{{district}}">
+				
+			</section>
+		{{/with}}
+    </script>
+
+    <script id="addressListView-template" type="text/x-handlebars-template">
+        <section class="address-list">
+            {{#each list}}
+            <div class="item">
+                <div class="current-icon j_select" data-id="{{ua_id}}">
+                    <span class="i-select {{#if selected}}i-selected{{/if}}"><i class="iconfont">&#xe601;</i></span> 
+                </div>
+                <div class="bd">
+                <span class="uname">{{receiver_name}}</span><span class="uphone">{{receiver_mobile}} {{receiver_phone}}</span> {{#if is_default}}<span>默认地址</span>{{/if}}
+                    <div class="uaddress">
+                        {{state}}{{city}}{{district}}{{address}}
+                    </div>
+                </div>
+                <a href="#address/edit/{{../selectedIds}}/{{ua_id}}" class="go-edit">
+                    <i class="iconfont in-open-icon">&#xe610;</i>
+                </a>
+            </div>
+            {{/each}}
+        </section>
+        <section class="btn-line bottom-button">
+            <a href="#address/new/{{selectedIds}}" class="ui-btn">添加新地址</a>
+        </section>
+    </script>
+    
+
+    <script id="couponListView-template" type="text/x-handlebars-template">
+        <section class="coupon-list">
+            <ul>
+            {{#each list}} 
+                {{#if selected}}
+                    <li> 
+                        <div class="coul-l">
+                            <span class="i-select i-selected"><i class="iconfont">&#xe601;</i></span>
+                            <strong class="c-code">{{show_code}}</strong>
+                        </div>
+                        <div class="coul-r"><button class="ui-btn btn-off">取消</button></div>
+                        <a class="ui-btn-small j_coupon_cancel" href="javascript:void(0);" data-id="{{coupon_id}}"></a>
+                    </li>
+                {{else}}
+					{{#if enabled}}
+                    <li> 
+                        <div class="coul-l">
+                            <span class="i-select"><i class="iconfont">&#xe601;</i></span>
+                            <strong class="c-code">{{show_code}}</strong>
+                        </div>
+                        <div class="coul-r"><button class="ui-btn btn-use">使用</button></div>
+                        <a class="ui-btn-small j_coupon_select" href="javascript:void(0);" data-id="{{coupon_id}}"></a>
+                    </li>
+					{{else}}
+					<li> 
+                        <div class="coul-l">
+                            <span class="i-select"><i class="iconfont">&#xe601;</i></span>
+                            <strong class="c-code">{{show_code}}</strong>
+                        </div>
+                        <div class="coul-r"><button class="ui-btn btn-no-use" style="background-color: #ccc;">不可用</button></div>
+                        <a class="ui-btn-small" href="javascript:void(0);" data-id="{{coupon_id}}"></a>
+                    </li>
+					{{/if}}
+                {{/if}}
+            {{/each}}
+            </ul>
+        </section>
+    </script>
+
+    <script id="invoiceListView-template" type="text/x-handlebars-template">
+        <section class="invoice-form">
+            <div class="form-line">
+                <div class="form-hd" style="width:75px;">所购商品：</div>
+                <div class="form-bd">
+                    <span class="invoice-radio"><input class="j_invoice_cancel" id="invoice-rad1" name="invoiceRadio" type="radio" value="Unknow" />
+					<label for="invoice-rad1">不开发票</label>
+					</span>
+					<span class="invoice-radio"><input class="j_invoice_radio" id="invoice-rad2" name="invoiceRadio" checked="true" type="radio" value="Items" />
+					<label for="invoice-rad2">开发票</label>
+					</span>
+                </div> 
+            </div>
+            
+            
+			<div class="form-line">
+				<div class="form-hd" style="width:75px;">发票抬头：</div>
+				<div class="form-bd"><input type="text" name="" value="{{invoiceTitle}}" id="j_invoice_title" class="text-input"></div>
+			</div>
+			<section class="bottom-button">
+			  <a class="ui-btn j_invoice_save" href="javascript:void(0);" data-type="Items">保存</a>
+			</section> 
+
+        </section>
+
+    </script>
+
+</body>
+</html>

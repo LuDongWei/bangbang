@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title>主页</title>
+    
+    <script src="../../src/seajs/seajs/2.1.1/sea.js"></script>
+    <script>
+      seajs.config({
+          base:'../../src/'
+      });
+    </script>
+
+
+    <link rel="stylesheet" href="../../src/global/global.css">
+    <link rel="stylesheet" href="../../src/page/home/home.css">
+</head>
+<body>
+
+    <div class="home-container">
+         <!--焦点图-->
+         <section class="handOver">
+               <div class="wrap">
+                   <div id='slider' class='swipe'>
+                       <div class='swipe-wrap'>
+                           <div class="item">
+                                <img src="http://placehold.it/640x180/C7154A" width="100%">
+                           </div>
+                           <div class="item">
+                                <img src="http://placehold.it/640x180/C7154A" width="100%">
+                           </div>
+                       </div>
+                   </div>
+                   <ul class="slider-nav" id="slider-nav">
+                       <li></li>
+                       <li></li>
+                   </ul>
+               </div> 
+         </section> 
+         <!--焦点图-->
+         
+         <!--头部广告位-->
+         <section class="headAd">
+            <a href="">
+             <img src="http://placehold.it/640x180" width="100%">
+            </a> 
+         </section>
+         <!--头部广告位--> 
+         
+
+         <!--火爆推荐2-->
+         <section class="homeHot">
+            <h3 class="title">火爆推荐2</h3>
+            <div class="recommend-hot clearfix">
+                 <div class="hot-left">
+                      <div class="hot-big-item">
+                        <a href="">
+                           <img src="http://placehold.it/320x240" width="100%" >
+                        </a>
+                      </div>
+                      <div class="hot-small-item">
+                        <a href="">
+                           <img src="http://placehold.it/320x120" width="100%" >
+                        </a>  
+                      </div>
+                 </div>
+                 <div class="hot-right">
+                      <div class="hot-small-item">
+                        <a href="">
+                           <img src="http://placehold.it/320x120" width="100%" >
+                        </a>  
+                      </div>
+                      <div class="hot-small-item">
+                       <a href="">
+                           <img src="http://placehold.it/320x120" width="100%" >
+                        </a> 
+                      </div>
+                      <div class="hot-small-item">
+                        <a href="">
+                           <img src="http://placehold.it/320x120" width="100%" >
+                        </a> 
+                      </div>
+                 </div>
+            </div>   
+         </section>
+         <!--火爆推荐2-->
+
+         <!--行业精选-->
+         <section class="industry">
+              <h3 class="title">行业精选</h3>
+              <div class="industry-list">
+                <ul>
+                  <li class="item">
+                    <div class="industry-item clearfix">
+                      <a href="http://m.51bbmall.com/list/index?cid=82">
+                        <img src="http://placehold.it/320x120" width="100%"></a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="industry-item clearfix">
+                      <a href="http://m.51bbmall.com/list/index?cid=135">
+                        <img src="http://placehold.it/320x120" width="100%"></a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="industry-item clearfix">
+                      <a href="http://m.51bbmall.com/list/index?cid=89">
+                        <img src="http://placehold.it/320x120" width="100%"></a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="industry-item clearfix">
+                      <a href="http://m.51bbmall.com/list/index?cid=69">
+                        <img src="http://placehold.it/320x120" width="100%"></a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="industry-item clearfix">
+                      <a href="http://m.51bbmall.com/list/index?cid=46">
+                        <img src="http://placehold.it/320x120" width="100%"></a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="industry-item clearfix">
+                      <a href="http://m.51bbmall.com/list/index?cid=141">
+                        <img src="http://placehold.it/320x120" width="100%"></a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="industry-item clearfix">
+                      <a href="http://m.51bbmall.com/list/index?cid=132">
+                        <img src="http://placehold.it/320x120" width="100%"></a>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="industry-item clearfix">
+                      <a href="http://m.51bbmall.com/list/index?cid=171">
+                        <img src="http://placehold.it/320x120" width="100%"></a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+         </section>
+         <!--行业精选-->
+
+         <!--单品推荐-->
+         <section class="homeMore">
+              <div class="homeMore-banner clearfix">
+                <h3 class="title">更多惊喜</h3>
+                <span id="changeGoods">
+                   <i class="iconfont">&#xe60d;</i>
+                   换一批
+                </span>
+              </div>
+              <div class="homeMore-list clearfix" id="homeMoreList">
+                  <div class="defaultList-item">
+                      <div class="pic">
+                          <img src="http://placehold.it/320x320/E73932" width="100%">
+                      </div>
+                      <div class="defaultList-inf">
+                          <div class="name">
+                             [DUDU]摩登女王系列牛皮单肩包 [DUDU]摩登女王系列牛皮单肩包 
+                             [DUDU]摩登女王系列牛皮单肩包 
+                          </div>
+                          <div class="price"> <strong class="favorable">￥109.00</strong>
+                            <span class="original">
+                              原价:<del>100.00</del>
+                            </span>
+                          </div>
+                          <div class="manyBuy">
+                            已经有
+                            <span>20</span>
+                            人购买
+                          </div>
+                      </div>
+                  </div>
+                   <div class="defaultList-item">
+                      <div class="pic">
+                          <img src="http://placehold.it/320x320/E73932" width="100%">
+                      </div>
+                      <div class="defaultList-inf">
+                          <div class="name">
+                             [DUDU]摩登女王系列牛皮单肩包 [DUDU]摩登女王系列牛皮单肩包 
+                             [DUDU]摩登女王系列牛皮单肩包 
+                          </div>
+                          <div class="price"> <strong class="favorable">￥109.00</strong>
+                            <span class="original">
+                              原价:<del>100.00</del>
+                            </span>
+                          </div>
+                          <div class="manyBuy">
+                            已经有
+                            <span>20</span>
+                            人购买
+                          </div>
+                      </div>
+                  </div>
+             </div>
+         </section>
+         <!--单品推荐-->
+
+         <!--底部广告位-->
+         <section class="footerAd">
+            <a href=""> 
+             <img src="http://placehold.it/640x200/fd8e34" width="100%">
+            </a> 
+         </section>
+         <!--底部广告位-->
+    </div>
+
+
+    <script id="homeMore-template" type="text/x-handlebars-template">
+    {{#goods}}
+     <div class="defaultList-item">
+       <div class="pic">
+         <img src="{{img}}" width="100%"></div>
+       <div class="defaultList-inf">
+         <div class="name">
+            {{name}}
+         </div>
+         <div class="price"> <strong class="favorable">￥{{saleprice}}</strong>
+           <span class="original">
+             原价: <del>{{marketprice}}</del>
+           </span>
+         </div>
+         <div class="manyBuy">
+           已经有
+           <span>{{saleqty}}</span>
+           人购买
+         </div>
+       </div>
+    </div>
+    {{/goods}}    
+    </script>
+
+    <script type="text/javascript">
+    seajs.use("page/home/home")
+    </script>
+
+
+</body>
+</html>

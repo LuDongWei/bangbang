@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>单品页</title>
+    
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection" /> 
+
+    <meta name="keywords" content="" /> 
+    <meta name="description" content="" />
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    
+	<script src="../../src/seajs/seajs/2.1.1/sea.js"></script>
+    <script>
+      seajs.config({
+          base:'../../src/'
+      });
+    </script>
+
+
+	<link rel="stylesheet" href="../../src/global/global.css">
+    <link rel="stylesheet" href="../../src/page/item/item.css">
+
+
+</head>
+
+<body>
+    
+    <header class="m-head">
+		<div class="new-header">
+        	<a href="javascript:void(0);" class="l-a-back"><span class="iconfont">&#xe60b;</span></a>
+				<h2>商品详情</h2>
+			<a href="javascript:void(0);" class="l-a-user"><span class="iconfont">&#xe60a;</span></a>
+			<a href="javascript:void(0);" class="l-a-cart">
+				<span class="iconfont">&#xe609;</span>
+				<span id="J-cart-num" class="cart-num">0</span>
+			</a>
+    	</div>
+    </header>
+	
+	<br/>
+	
+	<header class="m-head">
+		<div class="new-header">
+        	<a href="javascript:void(0);" class="l-a-category"><span class="iconfont">&#xe614;</span></a>
+			
+			<div class="search-bar clearfix">
+                <form><input type="search" placeholder="搜索商品、店铺" autocomplete="off"></form>
+            </div>
+			
+			<a href="javascript:void(0);" class="l-a-user"><span class="iconfont">&#xe60a;</span></a>
+			<a href="javascript:void(0);" class="l-a-cart">
+				<span class="iconfont">&#xe609;</span>
+				<span id="J-cart-num" class="cart-num">0</span>
+			</a>
+    	</div>
+    </header>
+	
+    
+    <section class="i-pics">
+        <div class="wrap">
+            <div id='slider' class='swipe'>
+                <div class='swipe-wrap'>
+                    <div class="item"><a href="#"><img src="http://placehold.it/640x640/fcbbcd" width="320" height="320" alt=""></a></div>
+                    <div class="item"><a href="#"><img src="http://placehold.it/640x640/fcbbcd" width="320" height="320" alt=""></a></div>
+                    <div class="item"><a href="#"><img src="http://placehold.it/640x640/fcbbcd" width="320" height="320" alt=""></a></div>
+                </div>
+            </div>
+            <ul class="slider-nav" id="slider-nav">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+		<i class="iconfont fav-btn" data-sku="1507041301">&#xe605;</i>
+    </section>
+	
+	<section class="i-info">
+		<div class="g-info">
+			<div class="title"><h1>女款黑色半身裙</h1></div>
+			<div class="describe">
+				<p>现货火爆开售！货源紧张，先抢先得！</p>
+			</div>
+			
+			<div class="price-area">
+				<div class="m-price"><span class="price">¥<span class="price-val">2768.00</span><!--<s>¥6200</s>--></span> <span class="stock">(库存200)</span></div>
+				<div class="m-buy-total">2000人已购买</div>
+			</div>
+			
+			<div class="other-area">
+				<div class="b1">快递10.00元</div>
+				<div class="b2">月销33000笔</div>
+				<div class="b3">江苏南京</div>
+			</div>
+			
+			<div class="depositArea" id="depositArea" style="display:none;"></div>
+		</div>
+		
+		
+		<div class="g-size">
+			<p><span class="tit">尺码选择：</span></p>
+			<ul class="good-chioce-size clearfix">
+				<li class="z select">S(155)</li>
+				<li class="z">M(160)</li>
+				<li class="z">L(165)</li>
+				<li class="z">XL(170)</li>
+			</ul>
+		</div>
+		
+		<div class="g-color">
+			<p><span class="tit">颜色选择：</span></p>
+			<div class="good-chioce-color clearfix">
+				<a href="#" class="item select"><img src="http://placehold.it/40x40/" alt="玛瑙红" width="40" height="40"></a>
+				<a href="#" class="item"><img src="http://placehold.it/40x40/" alt="黑色" width="40" height="40"></a>
+				<a href="#" class="item"><img src="http://placehold.it/40x40/" alt="宝蓝" width="40" height="40"></a>
+				<a href="#" class="item"><img src="http://placehold.it/40x40/" alt="粉色" width="40" height="40"></a>
+			</div>
+		</div>
+		
+		<div class="g-quantity" id="J_g_quantity">
+			<p><span class="tit">购买数量：<span class="confine-tip">(每人限购3件)</span></span></p>
+			<div class="quantity">
+				<div class="handle-wrap">
+					<a href="javascript:;" class="hd-sub btn_disabled" data-type="2" id="J_g_quantity_sub">-</a>
+					<input class="num" id="buyNum" type="tel" value="1">
+					<a href="javascript:;" class="hd-add" data-type="2" id="J_g_quantity_add">+</a>
+				</div>
+				<div class="result_list" id="J_result_list"><p class="result_single"></p></div>
+			</div>
+		</div>
+		
+	</section>
+	
+
+    <section class="buy-bar">
+        <div class="bar-wrap">
+            <a href="#" class="btn-add-cart">加入购车</a>
+            <a href="#" class="btn-buy-now">立即购买</a>
+        </div>
+    </section>
+
+    <section class="i-shopinfo">
+		<div class="shopinfo">
+			<h3>XXXX专营店</h3>
+			<div class="score-area">
+				<ul class="score-list">
+					<li class="business-score">
+						<span>商家满意度：</span>
+						<div class="star-bar pr">
+							<div class="percentage star-3"></div>
+							<div class="starbarmask"></div>
+						</div>
+					</li>
+					
+					<li class="logistics-score">
+						<span>物流满意度：</span>
+						<div class="star-bar pr">
+							<div class="percentage star-3"></div>
+							<div class="starbarmask"></div>
+						</div>
+					</li>
+					<li class="service-score">
+						<span>服务满意度：</span>
+						<div class="star-bar pr">
+							<div class="percentage star-2"></div>
+							<div class="starbarmask"></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="go-shop"><a href="#"><span class="iconfont">&#xe60e;</span>&nbsp;进入店铺</a></div>
+	</section>
+	
+
+    <section class="i-panels">
+		<div class="good-detail">
+			<p class="dc-tit">商品参数<i class="far">/Detail</i></p>
+			<div class="info">
+				<table class="info-table">
+					<tbody>
+					<tr>
+						<td class="dc_table_tit">品牌名称：</td>
+						<td>米莱达MEETLADY</td>
+					</tr>
+					<tr>
+						<td class="dc_table_tit">商品名称：</td>
+						<td>女款黑色半身裙</td>
+					</tr>
+					<tr>
+						<td class="dc_table_tit">产    地：</td>
+						<td>中国</td>
+					</tr><tr>
+						<td class="dc_table_tit">材    质：</td>
+						<td>外层：100%聚酯纤维  里层：90.7%聚酯纤维  9.3%氨纶</td>
+					</tr><tr>
+						<td class="dc_table_tit">洗涤说明： </td>
+						<td>30度水洗 不可漂白 悬挂晾干 熨斗底板最高温度110度 缓和干洗</td>
+					</tr><tr>
+						<td class="dc_table_tit">备    注：</td>
+						<td>无配件</td>
+					</tr><tr>
+						<td class="dc_table_tit">积    分：</td>
+						<td>购买此商品预计获得149积分。</td>
+					</tr>  <tr>
+						<td class="dc_table_tit">货品编号：</td>
+						<td>4LQ149B</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<p class="dc-tit">商品图片<i class="far">/Image</i></p>
+			<div class="info">
+				<img src="img/pic.jpg" width="100%" />
+			</div>
+			
+		</div>
+        
+    </section>
+
+    <footer class="m-footer"></footer>
+    
+
+    <script>
+        seajs.use("page/item/item")
+    </script>
+
+</body>
+</html>

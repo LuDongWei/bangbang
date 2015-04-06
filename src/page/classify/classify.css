@@ -1,0 +1,74 @@
+.classifyOne-container{
+	width: 100%;
+	min-width: 320px;
+}
+
+
+/*--一级类目--*/
+.class-one-item{
+	width:33.3%;
+	float:left;
+	padding:2px;
+	position:relative;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.class-main{
+    background-color:#ffffff;
+}
+.class-one-item .c-pic{
+	min-height:79px;
+}
+.class-one-item .c-name{
+	text-align:center;
+	line-height:40px;
+}
+.c-go{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+
+/*--二级目录--*/
+.classifyTwo .title{
+	background-color:#555555;
+	color:#ffffff;
+	padding:8px 0px 8px 10px;
+}
+.classifyTwo .title a{
+    color: #fff;
+    display: block;
+}
+.class-two-item {
+	width:25%;
+	float:left;
+	padding:1px;
+	position:relative;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.class-two-item .c-pic{
+    min-height:60px; 
+}
+.class-two-item .c-name{
+    text-align:center;
+	line-height:30px;
+}
+
+
+/*---480样式---*/
+@media screen and (max-width: 480px){
+     .class-one-item .c-name{
+	  text-align:center;
+	  line-height:30px;
+     }
+     .class-two-item .c-name{
+      line-height:25px;	
+     }
+}

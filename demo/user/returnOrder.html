@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title>申请退款</title>
+    
+    <script src="../../src/seajs/seajs/2.1.1/sea.js"></script>
+    <script>
+      seajs.config({
+          base:'../../src/'
+      });
+    </script>
+
+
+    <link rel="stylesheet" href="../../src/global/global.css">
+    <link rel="stylesheet" href="../../src/page/user/user.css">
+</head>
+<body>
+    
+     <div class="returnOrder-container">
+         <!--退货-->
+         <section class="returnInf">
+              <ul class="returnInfList">
+                <li class="flex-out clearfix">
+                  <label for="cause">退货原因：</label>
+                  <input type="text" class="flex-in" name="name" id="cause" /> 
+                </li>
+                <li class="flex-out clearfix">
+                  <label for="price">退款金额：</label>
+                  <input type="text" class="flex-in green" name="name" id="price" value="77.90" disabled /> 
+                </li>
+                <li class="flex-out clearfix">
+                  <label for="explain">退货说明：</label>
+                  <input type="text" class="flex-in" name="name" id="explain" placeholder="请输入退货说明！" /> 
+                </li>
+                <li class="flex-out clearfix">
+                  <label for="uploading">上传凭证：</label>
+                  <a href="javascript:void(0)"><i class="iconfont">&#xe615;</i></a>&nbsp;&nbsp;
+                  <a href="javascript:void(0)"><i class="iconfont">&#xe615;</i></a>&nbsp;&nbsp;
+                  <a href="javascript:void(0)"><i class="iconfont">&#xe615;</i></a>&nbsp;&nbsp;
+                </li>
+              </ul>
+         </section>
+         <!--退货-->
+
+         <!--提交-->
+         <section class="return-submit">
+               <button class="ui-btn">
+                   申请提交
+              </button>
+         </section>
+         <!--提交-->
+     </div>
+
+</body>
+</html>

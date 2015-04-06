@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title>地址编辑页</title>
+    
+    <script src="../../src/seajs/seajs/2.1.1/sea.js"></script>
+    <script>
+      seajs.config({
+          base:'../../src/'
+      });
+    </script>
+
+
+    <link rel="stylesheet" href="../../src/global/global.css">
+    <link rel="stylesheet" href="../../src/page/user/user.css">
+</head>
+<body>
+   
+   <div class="addressEdit-container"> 
+        <!--地址添加-->
+        <section class="address-inf">
+             <ul class="addressInfList">
+                <li class="flex-out clearfix">
+                  <label for="name">收货人姓名：</label>
+                  <input type="text" class="flex-in" name="name" id="name" value="aa" /> 
+                </li>
+                <li class="flex-out clearfix">
+                  <label for="phone">收货人手机：</label>
+                  <input type="text" class="flex-in" name="name" id="phone" value="bb" /> 
+                </li>
+                <li class="flex-out clearfix">
+                  <label for="postcode">邮政编码：</label>
+                  <input type="number" class="flex-in" name="name" id="postcode" value="12" /> 
+                </li>
+                <li class="flex-out clearfix">
+                  <label for="address">详细地址：</label>
+                  <input type="text" class="flex-in" name="name" id="address" value="cc" /> 
+                </li>
+             </ul> 
+        </section>  
+        <!--地址添加-->
+
+        <!--确认-->
+         <section class="address-submit">
+              <button class="ui-btn">
+                   编辑完成
+              </button>
+         </section> 
+        <!--确认-->       
+   </div>
+
+</body>
+</html>  

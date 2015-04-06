@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title>列表和搜索页</title>
+    
+    <script src="../../src/seajs/seajs/2.1.1/sea.js"></script>
+    <script>
+      seajs.config({
+          base:'../../src/'
+      });
+    </script>
+
+
+    <link rel="stylesheet" href="../../src/global/global.css">
+    <link rel="stylesheet" href="../../src/page/category/category.css">
+</head>
+<body>
+   
+
+    <div id="container" class="category-container"> 
+        <section class="cate-general-wrap">
+			<ul class="cate-list">
+				<li class="row" data-id="21">
+					<div class="row-icon">
+						<i class="ico-21"><img src="http://placehold.it/76x76/ccc" alt="母婴用品" width="38" height="38"></i>
+					</div>
+					<div class="row-title"><span>母婴用品</span></div>
+				</li>
+				<div class="cate-sub" id="cate-sub-21" style="display:none;">
+					<div class="item-wrap"><div class="sub-item" data-id="25">营养保健</div></div>
+					<div class="item-wrap"><div class="sub-item" data-id="26">洗护用品</div></div>
+					<div class="item-wrap"><div class="sub-item" data-id="46">哺育喂养</div></div>
+					<div class="item-wrap"><div class="sub-item" data-id="47">育儿用品</div></div>
+					<div class="item-wrap"><div class="sub-item" data-id="1003">趣味童年</div></div>
+					<div class="item-wrap"><div class="sub-item" data-id="1088">孕产妇用品</div></div>
+				</div>
+				<li class="row" data-id="43">
+					<div class="row-icon">
+						<i class="ico-43">
+							<img src="http://placehold.it/76x76/ccc" alt="礼品箱包" width="38" height="38">
+						</i>
+					</div>
+					<div class="row-title"><span>礼品箱包</span></div>
+				</li>
+				<div class="cate-sub" id="cate-sub-43" style="display:none;">
+					<div class="item-wrap"><div class="sub-item" data-id="120">潮流女包</div></div>
+					<div class="item-wrap"><div class="sub-item" data-id="121">时尚男包</div></div>
+					<div class="item-wrap"><div class="sub-item" data-id="1394">功能箱包</div></div>
+				</div>
+			</ul>
+        </section>
+    </div>
+	
+	<div id="in-container" style="display:none;">
+		<div class="top-bar">
+			<div class="left-btn">
+				<a href="#" class="back-btn" id="in-close"></a>
+			</div>
+			<div class="top-center">
+				<div class="t-title">
+					营养保健
+				</div>
+			</div>
+			<div class="right-btn">
+			</div>
+		</div>
+		<div class="content-bd">
+			<ul>
+				<li class="row-level" data-id="52"><a href="#">维生素</a></li>	
+				<li class="row-level" data-id="54"><a href="#">钙补充</a></li>
+				<li class="row-level" data-id="56"><a href="#">牛初乳</a></li>
+				<li class="row-level" data-id="204"><a href="#">鱼油/DHA</a></li>
+				<li class="row-level" data-id="607"><a href="#">提高免疫力</a></li>
+				<li class="row-level" data-id="1095"><a href="#">益生菌</a></li>
+				<li class="row-level" data-id="652"><a href="#">其他营养品</a></li>
+			</ul>
+		</div>
+	</div>
+   
+    <script type="text/javascript">
+      seajs.use("page/category/category")
+    </script>
+
+</body>
+</html>
